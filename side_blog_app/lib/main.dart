@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:side_blog_app/core/theme/theme.dart';
-import 'package:side_blog_app/features/auth/presentation/pages/signup_page.dart';
+import 'package:side_blog_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:side_blog_app/features/auth/presentation/pages/login_page.dart';
+import 'package:side_blog_app/init_dependencies.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initdependencies();
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (_) => serviceLocator<AuthBloc>(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Blog App',
       theme: AppTheme.darkThemeMode,
-      home: const SignUpPage(),
+      home: const LoginPage(),
     );
   }
 }

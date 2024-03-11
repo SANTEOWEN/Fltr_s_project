@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:side_blog_app/core/theme/app_pallete.dart';
 
 class AuthGradientButton extends StatelessWidget {
-  const AuthGradientButton({super.key});
+  final String buttonText;
+  final VoidCallback onPressed;
+  const AuthGradientButton({super.key, required this.buttonText, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +18,13 @@ class AuthGradientButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(5)
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             fixedSize: const Size(395, 55),
             backgroundColor: AppPallete.transparentColor, shadowColor: AppPallete.transparentColor),
-        child: const Text(
-          'Sign Up',
-          style: TextStyle(fontWeight: FontWeight.w600),
+        child: Text(
+          buttonText,
+          style: const TextStyle(fontWeight: FontWeight.w600),
         ),
       ),
     );
