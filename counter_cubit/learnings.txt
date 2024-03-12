@@ -1,0 +1,117 @@
+🔴[Important] - Add flutter_bloc to the dependencies(steps)
+1st[STEP] - press ctrl + shift + p to open the VSCODE panel
+2nd[STEP] - Now just type add and it will show [Dart: Add dependency]
+3rd[STEP] - Now press enter then type flutter_bloc to automatically install the flutter_bloc package to the dependencies on PUBSEC.YAML
+
+🔴[Important] - To create new Cubit/Bloc(steps)
+1st[STEP] - Press ctrl + shift + p to open the VSCODE panel.
+2nd[STEP] - Then type 'new' and it will show something [BLOC: New Cubit]
+3rd[STEP] - Then press enter then type the name of your cubit then press enter again then select which folder you want it to put the bloc folder 
+[NOTE] - it is  basically the same with Bloc
+
+🔵🟦[BLOC CUBIT]
+- A [Cubit] is similar to [Bloc] but has no notion of events
+  and relies on methods to [emit] new states.
+
+- Every [Cubit] requires an initial state which will be the state of the [Cubit] before 
+[emit] has been called.
+
+- The current state of a [Cubit] can be accessed via the [state] getter.
+
+
+🏢[CUBIT_STRUCTURE]
+
+class CounterCubit extends Cubit<int>{
+    CounterCubit() : super(0);
+
+    void increment => emit(state + 1);
+}
+
+🦄[EXPLANATION [CUBIT_STRUCTURE]]
+
+class CounterCubit extends Cubit<int>
+- Here we created a class name CounterCubit that extends the Cubit class with <int> type
+  + we extends the [Cubit] class so we can manage state as a Counter in short hand this class holds
+  all of the methods that holds all of the logic for the states we make
+
+CounterCubit() : super(0);
+- Here we created a constructor for the class CounterCubit this builds the states or for the context of the bloc this holds all of the states 
+  + as we can see we have [super0] in counter app we always use decrement and increment functions 
+  this part holds the initial state of for it so we can manage the state using methods.
+
+void increment => emit(state + 1);
+- as you can see the structure of this is an actual function just like other OOP language we also use methods here just like what i mentioned from the previous topic
+  + on this method(function) we see a [emit] from the word it self emit use to emit! a new state for the cubit on our case 
+  for example we are building a counter app we saw on our function that [emit] we set the parameter of it into [state + 1],
+  this means we set a new value for our [CounterCubit()] state holder so from [0] if we press the button on our onClicked function of [increment] it will
+  set a new state value of + 1 so the new value will be [1] 
+
+[NEED MORE VISUAL AFTER EXPLANATION]
+
+🦄[EXPLANATION [BLOC_STRUCTURE]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+❗[NOTES _ONE] - Cubit cannot be passed global unless we do this ⬇
+
+🔴[Important] - To access the cubit for all of the dart.files we use [BlocProvider]
+(Why?) - Because we cant just call the cubit for every files it can cause some optimization issues
+
+*STEPS*
+1st - Wrap the [MaterialApp] with [BlocProvider] then it will as a value for its parameter which is the [create]
+[looks]
+ BlocProvider(create: (context) => CounterCubit(), child: MaterialApp())
+
+2nd - Next we call the cubit that we created so we can provide it anywhere
+[looks]
+ BlocProvider(create: (context) => (theCubitYouCreated()), child: MaterialApp())
+
+3rd - now add the child MaterialApp
+[looks]
+ BlocProvider(create: (context) => (CounterCubit()), child: (materialapp here))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
