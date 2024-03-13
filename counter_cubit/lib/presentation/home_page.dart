@@ -1,3 +1,6 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:counter_cubit/bloc/counter_bloc.dart';
 import 'package:counter_cubit/cubit/counter_cubit.dart';
 import 'package:counter_cubit/inct_dec_page.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +13,9 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //We Always need to initialize all of our blocs that we created.
     final counterCubit = BlocProvider.of<CounterCubit>(context);
+    final counterBloc = BlocProvider.of<CounterBloc>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -24,8 +29,9 @@ class MyHomePage extends StatelessWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            BlocBuilder<CounterCubit, int>(
-              bloc: counterCubit,
+            BlocBuilder<CounterBloc, int>(
+              //in Bloc we dont need to use the [bloc] parameter anymore because we already provided it globaly main.dart.
+              //bloc: counterBloc
               builder: (context, counter) {
                 return Text(
                   '$counter',
