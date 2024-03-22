@@ -6,6 +6,8 @@ import 'package:side_blog_app/features/auth/domain/entities/user.dart';
 import 'package:side_blog_app/features/auth/domain/repository/auth_repository.dart';
 
 class UserSignUp implements UseCase<User, UserSignUpParams> {
+
+  //Here we directly Contacting the AuthoRepository interface.
   final AuthRepository authRepository;
   const UserSignUp(this.authRepository);
 

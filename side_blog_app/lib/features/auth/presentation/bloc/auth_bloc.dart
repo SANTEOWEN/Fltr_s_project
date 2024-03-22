@@ -8,8 +8,12 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+
+  //This are the usecases they deal with there specific functions
   final UserSignUp _userSignUp;
+  //UserSignUp used to signup things
   final UserLogin _userLogin;
+  //UserSignUp used to Login things
 
   AuthBloc({
     required UserSignUp userSignUp,
