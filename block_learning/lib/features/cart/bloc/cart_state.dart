@@ -29,5 +29,8 @@ final class CartFailState extends CartState {}
 //*This state holds the notifaction when item is removed
 final class CartItemRemovedState extends CartState {}
 
-//^This state holds the notifaction for changes state
+//^This state holds the notifaction for changes state specifically for items that added to cart
 final class CartNotifAddedState extends CartActionState {}
+
+//^This state holds the notifaction for changes state specifically for items that getting removed from the cart
+final class CartNotifItemRemovedState extends CartActionState {}

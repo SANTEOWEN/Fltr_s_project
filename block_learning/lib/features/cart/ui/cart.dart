@@ -38,7 +38,7 @@ class _CartState extends State<Cart> {
           //^When the state is not actionState(event) it only rebuild the appp
           buildWhen: (previous, current) => current is! CartActionState,
           listener: (context, state) {
-            if (state is CartItemRemovedState) {
+            if (state is CartNotifItemRemovedState) {
               print('Emit');
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

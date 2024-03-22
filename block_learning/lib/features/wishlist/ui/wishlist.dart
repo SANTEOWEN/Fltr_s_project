@@ -4,6 +4,7 @@ import 'package:block_learning/features/wishlist/bloc/wishlist_bloc.dart';
 import 'package:block_learning/features/wishlist/ui/wishlist_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WishList extends StatefulWidget {
   const WishList({super.key});
@@ -38,7 +39,18 @@ class _WishListState extends State<WishList> {
               listenWhen: (previous, current) => current is WishlistActionState,
               //^buildWhen - means it only builds when the current set state is not being used(based on the logic)
               buildWhen: (previous, current) => current is! WishlistActionState,
-              listener: (context, state) {},
+              listener: (context, state) {
+                if (state is WishlistNotifRemovedState) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'Wishlist removed $state',
+                        style: GoogleFonts.poppins(fontSize: 15),
+                      ),
+                    ),
+                  );
+                }
+              },
               builder: (context, state) {
                 switch (state.runtimeType) {
                   case WishlistLoadingState:
@@ -61,6 +73,11 @@ class _WishListState extends State<WishList> {
                                   succesState.wishlistItems[index],
                               wishlistBloc: wishlistBloc);
                         }));
+
+                  case WishlistFailState:
+                    return const Center(
+                      child: Text('Error Getting Data'),
+                    );
                   default:
                     return const SizedBox();
                 }

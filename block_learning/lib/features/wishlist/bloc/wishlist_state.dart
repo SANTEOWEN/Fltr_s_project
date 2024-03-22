@@ -4,7 +4,7 @@ part of 'wishlist_bloc.dart';
 //*This state holds all of the states
 sealed class WishlistState {}
 
-//*This state holds all of the actions states that holds of the actions like event
+//^This state holds all of the actions states that holds of the actions like event !!this holds any sort of short state
 abstract class WishlistActionState extends WishlistState {}
 
 //*This state holds all of the states
@@ -15,7 +15,6 @@ final class WishlistLoadingState extends WishlistState {}
 
 //*This state holds the succes states like after loading states and it holds the model that we need to fetch that we need to emit after the succes state
 final class WishlistSuccessState extends WishlistState {
-
   //^We need the list of Class ProductsDataModel so we can output it on frontend
   final List<ProductsDataModel> wishlistItems;
 
@@ -27,3 +26,6 @@ final class WishlistFailState extends WishlistState {}
 
 //*This state holds the notifaction when item is removed
 final class WishlistItemRemovedState extends WishlistState {}
+
+//*This st
+final class WishlistNotifRemovedState extends WishlistActionState {}
